@@ -1,0 +1,42 @@
+.banner {
+  background-image: url(./assets/images/banner.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 70vh;
+  opacity: 85%;
+}
+.product-banner {
+  background-image: url(./assets/images/banner2.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 40vh;
+  opacity: 85%;
+  // h2 {
+  //   @keyframes typing {
+  //     from {
+  //       width: 0;
+  //     }
+  //   }
+  //   width: 12em;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  //   animation: typing 2s steps(12);
+  // }
+}
+.subscription {
+  background-image: url(./assets/images/subscription01.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 70vh;
+}
+.introduce {
+  li {
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.5s;
+    }
+    img {
+      @include size(100%, 100%);
+    }
+  }
+}

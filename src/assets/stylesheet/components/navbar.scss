@@ -1,0 +1,42 @@
+.logo {
+  a {
+    width: 100px;
+    height: 100px;
+    display: block;
+    background-image: url(./assets/images/logo.png);
+    text-indent: -99999px;
+    white-space: nowrap;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+.nav-link {
+  position: relative;
+  // display: block;
+  &:hover {
+    font-weight: bolder; /*滑到a連結，字體加粗*/
+    color: $primary !important;
+  }
+  /*製作滑到a連結後，出現底線的動畫*/
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%; /*由50%的地方往0呈現*/
+    right: 50%; /*由50%的地方往0呈現*/
+    bottom: -5px;
+    height: 0;
+    border-bottom: 2px solid $primary;
+    transition: 0.5s; /*0.5秒內動畫呈現完畢*/
+  }
+  &:hover:after {
+    left: 0; /*由50%的地方往0呈現*/
+    right: 0; /*由50%的地方往0呈現*/
+  }
+}
+.cart-icon {
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.5s; /*0.5秒內動畫呈現完畢*/
+  }
+}

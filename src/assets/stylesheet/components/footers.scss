@@ -1,0 +1,19 @@
+.footer-contact,
+.footer-copyright {
+  li a:hover {
+    color: $primary !important;
+  }
+}
+.footer-icon {
+  li a {
+    display: block;
+    &:hover {
+      transform: translateY(-10px);
+      transition: 0.5s;
+    }
+  }
+}
+.footer-copyright {
+  border-top: solid 1px $secondary;
+  padding-top: 16px;
+}

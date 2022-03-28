@@ -1,0 +1,24 @@
+// 匯入bootstrap
+@import "~bootstrap/scss/functions";
+// 單獨匯入bootstrap變數檔案，將_variables.scss複製一份放到helpers資料夾
+@import "./helpers/variables";
+@import "~bootstrap";
+
+// 匯入客製base scss內容檔案
+@import "./base/base";
+// 匯入客製mixin scss內容檔案
+@import "./helpers/mixin";
+// 匯入客製文字大小 scss內容檔案
+@import "./config/text-size";
+// 匯入客製Navbar scss內容檔案
+@import "./components/navbar";
+// 匯入客製Footer scss內容檔案
+@import "./components/footers";
+// 匯入客製banner scss內容檔案
+@import "./pages/home.scss";
+// 匯入客製按鈕scss內容檔案
+@import "./components/customizeButton";
+// 匯入客製關閉按鈕scss內容檔案
+@import "./components/crossButton";
+// 匯入返回頁面最頂端按鈕
+@import "./components/scroll-top-btn";

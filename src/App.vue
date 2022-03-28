@@ -1,30 +1,28 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+<navbar></navbar>
   <router-view/>
+<footers></footers>
 </template>
 
+<script>
+import navbar from '@/components/FrontNavbar.vue';
+
+import footers from '@/components/FrontFooters.vue';
+
+export default {
+  components: {
+    navbar,
+    footers,
+  },
+};
+
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
+// 匯入 sweetalert2 CSS檔案
+@import '../node_modules/sweetalert2/dist/sweetalert2.min.css';
+// 匯入 自己的css樣式，通常會是all.scss這個檔案來做管理
+@import './assets/stylesheet/all';
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

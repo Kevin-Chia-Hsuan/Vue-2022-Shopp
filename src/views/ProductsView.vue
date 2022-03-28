@@ -1,5 +1,5 @@
 <template>
-  <div class="product-banner container-fluid">
+  <div class="product-banner container-fluid opacity-100">
     <div class="row h-100">
       <div class="container d-flex align-items-center">
         <!-- Vue3 的 AOS 寫法，要使用 aos-vue 標籤 -->

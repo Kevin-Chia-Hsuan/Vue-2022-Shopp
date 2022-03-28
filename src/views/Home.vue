@@ -1,21 +1,19 @@
 <template>
   <div class="over-x bg-warning">
     <section>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="banner w-100">
-            <div class="container d-flex align-items-center h-100">
-              <!-- Vue3 的 AOS 寫法，要使用 aos-vue 標籤 -->
-              <aos-vue class="row w-100" animation="fade-up" :duration="1000">
-                <div class="col-11 offset-1 col-lg-4 offset-lg-8">
-                  <h2 class="text-sm-2xl text-lg-3xl text-4xl text-light fw-bold mb-5">想透過鏡頭看世界嗎？</h2>
-                  <p class="text-lg-m text-lg text-light mb-7">來蝦拍選購器材，讓我們一起瞎拍吧！</p>
-                  <router-link to="products" class="w-75 btn-custom btn-custom-light d-flex justify-content-center align-items-center">
-                    <div class="text-lg-m text-lg">手刀選購去</div>
-                  </router-link>
-                </div>
-              </aos-vue>
-            </div>
+      <div class="banner container-fluid">
+        <div class="row h-100">
+          <div class="container d-flex align-items-center">
+            <!-- Vue3 的 AOS 寫法，要使用 aos-vue 標籤 -->
+            <aos-vue class="row w-100" animation="fade-up" :duration="1000">
+              <div class="col-11 offset-1 col-lg-4 offset-lg-8">
+                <h2 class="text-sm-2xl text-lg-3xl text-4xl text-light fw-bold mb-5">想透過鏡頭看世界嗎？</h2>
+                <p class="text-lg-m text-lg text-light mb-7">來蝦拍選購器材，讓我們一起瞎拍吧！</p>
+                <router-link to="products" class="w-75 btn-custom btn-custom-light d-flex justify-content-center align-items-center">
+                  <div class="text-lg-m text-lg">手刀選購去</div>
+                </router-link>
+              </div>
+            </aos-vue>
           </div>
         </div>
       </div>

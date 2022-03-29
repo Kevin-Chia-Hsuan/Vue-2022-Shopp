@@ -151,12 +151,22 @@
             <div class="col-12">
               <h2 class="text-sm-2xl text-4xl text-light text-border">快來訂閱我們吧！</h2>
               <p class="text-sm-m text-2xl text-light text-border">現在訂閱，馬上領取9折優惠</p>
-              <form class="subscribe-form">
+              <Form ref="form" class="subscribe-form" v-slot="{ errors }" @submit="getCoupon">
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="請輸入您的電子郵件" aria-label="請輸入您的電子郵件" aria-describedby="button-addon2" />
-                  <button class="btn btn-primary" type="button" id="button-addon2">訂閱</button>
+                  <Field
+                  id="email"
+                  name="信箱"
+                  type="email"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors['信箱'] }"
+                  placeholder="請輸入 Email"
+                  rules="email|required"
+                  v-model="form.user.email"
+                  ></Field>
+                  <button class="btn btn-primary" type="submit">訂閱</button>
+                  <ErrorMessage name="信箱" class="invalid-feedback text-xl" style="font-weight: bold;"></ErrorMessage>
                 </div>
-              </form>
+              </Form>
             </div>
           </div>
         </aos-vue>
@@ -183,6 +193,26 @@
 import AosVue from 'aos-vue';
 
 export default {
+  data() {
+    return {
+      // 表單結構
+      form: {
+        user: {
+          email: '',
+        },
+        message: '',
+      },
+    };
+  },
   components: { AosVue },
+  methods: {
+    getCoupon() {
+      this.$swal(
+        '感謝您的訂閱',
+        '您的專屬9折優惠碼：10off_sale',
+        'success',
+      );
+    },
+  },
 };
 </script>

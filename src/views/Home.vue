@@ -1,7 +1,7 @@
 <template>
   <div class="over-x bg-warning">
     <section>
-      <div class="banner container-fluid opacity-100">
+      <div class="banner container-fluid" style="background-image: url(https://raw.githubusercontent.com/Kevin-Chia-Hsuan/Vue-2022-Shopp/master/src/assets/images/banner01.jpg); background-size: cover; background-position: center center; height: 70vh; opacity: 85%">
         <div class="row h-100">
           <div class="container d-flex align-items-center">
             <!-- Vue3 的 AOS 寫法，要使用 aos-vue 標籤 -->

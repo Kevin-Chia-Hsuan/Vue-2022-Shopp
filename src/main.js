@@ -21,8 +21,12 @@ import VueSweetalert2 from 'vue-sweetalert2';
 // 匯入 AOS (Vue3寫法)
 import AosVue from 'aos-vue';
 
-// 匯入
+// 匯入 VueWriter 套件
 import VueWriter from 'vue-writer';
+
+// 匯入 VueLoading 讀取動畫套件
+import VueLoading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 // VeeValidate套件匯入
 import {
@@ -70,8 +74,11 @@ app.use(VueSweetalert2);
 // 註冊 AOS 元件(Vue3寫法)
 app.use(AosVue);
 
-// 註冊
+// 註冊 VueWriter 套件
 app.use(VueWriter);
+
+// VueLoading 讀取動畫套件
+app.use(VueLoading);
 
 app.use(router);
 app.mount('#app');

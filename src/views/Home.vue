@@ -144,7 +144,7 @@
         </ul>
       </div>
     </section>
-    <section>
+    <!-- <section>
       <div class="subscription container-fluid">
         <aos-vue class="container d-flex flex-column align-items-md-end justify-content-center h-100" animation="zoom-in" :duration="1000">
           <div class="row">
@@ -171,48 +171,28 @@
           </div>
         </aos-vue>
       </div>
-    </section>
+    </section> -->
   </div>
   <!-- 返回頁面最上面按鈕 -->
-  <a href="#" class="scrollTopBtn">
+  <button type="button" class="scrollTopBtn" @click="scrollToTop">
     <i class="bi bi-capslock-fill fs-4"></i>
-  </a>
+  </button>
 </template>
 
 <script>
-// Vue2 AOS寫法
-// import AOS from 'aos';
-
-// export default {
-//   mounted() {
-//     AOS.init();
-//   },
-// };
-
 // Vue3 AOS寫法
 import AosVue from 'aos-vue';
 
 export default {
-  data() {
-    return {
-      // 表單結構
-      form: {
-        user: {
-          email: '',
-        },
-        message: '',
-      },
-    };
-  },
-  components: { AosVue },
   methods: {
-    getCoupon() {
-      this.$swal(
-        '感謝您的訂閱',
-        '您的專屬9折優惠碼：10off_sale',
-        'success',
-      );
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     },
   },
+  components: { AosVue },
 };
 </script>

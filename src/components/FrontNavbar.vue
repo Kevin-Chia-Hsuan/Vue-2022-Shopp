@@ -33,4 +33,7 @@
       </div>
     </div>
   </nav>
+  <button type="button" class="scrollTopBtn" @click="scrollToTop">
+    <i class="bi bi-capslock-fill fs-4"></i>
+  </button>
 </template>

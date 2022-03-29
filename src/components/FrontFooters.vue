@@ -1,5 +1,33 @@
 <template>
-  <div class="container-fluid footer bg-warning py-2 py-md-5">
+  <section>
+    <div class="subscription container-fluid">
+      <aos-vue class="container d-flex flex-column align-items-md-end justify-content-center h-100" animation="zoom-in" :duration="1000">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-sm-2xl text-4xl text-light text-border">快來訂閱我們吧！</h2>
+            <p class="text-sm-m text-2xl text-light text-border">現在訂閱，馬上領取9折優惠</p>
+            <Form ref="form" class="subscribe-form" v-slot="{ errors }" @submit="getCoupon">
+              <div class="input-group mb-3">
+                <Field
+                id="email"
+                name="信箱"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': errors['信箱'] }"
+                placeholder="請輸入 Email"
+                rules="email|required"
+                v-model="form.user.email"
+                ></Field>
+                <button class="btn btn-primary" type="submit">訂閱</button>
+                <ErrorMessage name="信箱" class="invalid-feedback text-lg" style="font-weight: bold;"></ErrorMessage>
+              </div>
+            </Form>
+          </div>
+        </div>
+      </aos-vue>
+    </div>
+  </section>
+  <div class="container-fluid footer bg-warning py-5 py-md-8">
     <div class="container">
       <div class="row footer-list">
         <ul class="col-md-8 footer-contact">
@@ -54,3 +82,32 @@
     </div>
   </div>
 </template>
+
+<script>
+
+import AosVue from 'aos-vue';
+
+export default {
+  data() {
+    return {
+      // 表單結構
+      form: {
+        user: {
+          email: '',
+        },
+        message: '',
+      },
+    };
+  },
+  components: { AosVue },
+  methods: {
+    getCoupon() {
+      this.$swal(
+        '感謝您的訂閱',
+        '您的專屬9折優惠碼：10off_sale',
+        'success',
+      );
+    },
+  },
+};
+</script>

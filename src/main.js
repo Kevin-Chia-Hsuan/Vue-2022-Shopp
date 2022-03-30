@@ -62,6 +62,9 @@ app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
 
+// 註冊  VueLoading 全域元件
+app.component('VueLoading', VueLoading);
+
 // 註冊 axios 元件
 app.use(VueAxios, axios);
 
@@ -78,7 +81,7 @@ app.use(AosVue);
 app.use(VueWriter);
 
 // VueLoading 讀取動畫套件
-app.use(VueLoading);
+// app.use(VueLoading);
 
 app.use(router);
 app.mount('#app');

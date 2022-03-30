@@ -14,6 +14,13 @@ export default {
     navbar,
     footers,
   },
+  // 監聽桌機以下版本時，手機選單點選其他頁面轉跳後，自動收折手機選單
+  watch: {
+    $route() {
+      const navbarNavAltMarkup = document.querySelector('#navbarNavAltMarkup');
+      navbarNavAltMarkup.classList.remove('show');
+    },
+  },
 };
 
 </script>

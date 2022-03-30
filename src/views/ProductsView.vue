@@ -1,4 +1,6 @@
 <template>
+  <!-- Loading 套件 -->
+  <loading :active="isLoading"></loading>
   <div class="product-banner container-fluid" style="background-image: url(https://raw.githubusercontent.com/Kevin-Chia-Hsuan/Vue-2022-Shopp/master/src/assets/images/banner02.jpg); background-size: cover; background-position: center center; height: 70vh; opacity: 85%">
     <div class="row h-100">
       <div class="container d-flex align-items-center">
@@ -172,6 +174,9 @@
 // 載入 分頁頁碼 元件
 import pagination from '@/components/Pagination.vue';
 
+// 載入 讀取套件 元件
+import Loading from 'vue-loading-overlay';
+
 // scrollTop 需要的 DOM
 const tBody = document.querySelector('html,body');
 
@@ -191,6 +196,7 @@ export default {
   },
   components: {
     pagination,
+    Loading,
   },
   mounted() {
     // 取得資料、DOM元素

@@ -1,7 +1,7 @@
 <template>
   <!-- Loading 套件 -->
   <loading :active="isLoading"></loading>
-  <div class="product-banner container-fluid" style="background-image: url(https://raw.githubusercontent.com/Kevin-Chia-Hsuan/Vue-2022-Shopp/master/src/assets/images/banner02.jpg); background-size: cover; background-position: center center; height: 70vh; opacity: 85%">
+  <div class="product-banner container-fluid" style="background-image: url(https://raw.githubusercontent.com/Kevin-Chia-Hsuan/Vue-2022-Shopp/master/src/assets/images/banner02.jpg); background-size: cover; background-position: center center; height: 50vh; opacity: 85%">
     <div class="row h-100">
       <div class="container d-flex align-items-center">
         <!-- Vue3 的 AOS 寫法，要使用 aos-vue 標籤 -->
@@ -49,7 +49,7 @@
             </ul>
           </div>
           <div class="col-md-9 col-lg-10 mt-8 mt-md-0">
-            <ul class="row">
+            <ul class="row ps-0">
               <li class="col-12 col-md-6 col-lg-4 mb-5" v-for="product in products" :key="product.id">
                 <div class="card">
                   <div
@@ -215,19 +215,41 @@ export default {
     getProducts(page = 1) { // 使用參數預設值觀念，若未帶參數，則預設為第1頁
       // 將預設page參數帶入API網址中
       this.isLoading = true;
-      this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`)
-        .then((res) => {
+      // 解析出品項分類的 category
+      const { category } = this.$route.params;
+      // console.log(category);
+
+      // 判斷是否有帶入品項分類的 category
+      if (category !== undefined) {
+        // console.log(category);
+        this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}&category=${category}`)
+          .then((res) => {
           // console.log(res.data);
           // 取出前台商品內容
-          this.products = res.data.products;
-          // console.log(this.products);
-          this.pagination = res.data.pagination;
-          // console.log(this.pagination)
-          tBody.scrollTop = 0;
-          this.isLoading = false;
-        }).catch((err) => {
-          console.log(err);
-        });
+            this.products = res.data.products;
+            // console.log(this.products);
+            this.pagination = res.data.pagination;
+            // console.log(this.pagination)
+            tBody.scrollTop = 0;
+            this.isLoading = false;
+          }).catch((err) => {
+            console.log(err);
+          });
+      } else {
+        this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`)
+          .then((res) => {
+          // console.log(res.data);
+          // 取出前台商品內容
+            this.products = res.data.products;
+            // console.log(this.products);
+            this.pagination = res.data.pagination;
+            // console.log(this.pagination)
+            tBody.scrollTop = 0;
+            this.isLoading = false;
+          }).catch((err) => {
+            console.log(err);
+          });
+      }
     },
   },
 };

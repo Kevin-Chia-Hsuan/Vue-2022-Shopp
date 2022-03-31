@@ -13,7 +13,12 @@ const routes = [
     component: () => import('../views/ProductsView.vue'),
   },
   {
-    path: '/product/:id', // :id動態路由方式
+    path: '/products/:category', // :category 動態參數手法(要加 : )，篩選商品類別
+    name: 'productsCategory',
+    component: () => import('../views/ProductsView.vue'),
+  },
+  {
+    path: '/product/:id', // :id 動態參數手法(要加 : )，單一產品頁
     name: 'product',
     component: () => import('../views/ProductView.vue'),
   },

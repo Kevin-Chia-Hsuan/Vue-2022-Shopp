@@ -7,9 +7,6 @@
         <!-- Vue3 的 AOS 寫法，要使用 aos-vue 標籤 -->
         <div class="row w-100">
           <div class="col-12">
-            <!-- <h2 class="text-sm-xl text-lg-2xl text-4xl text-center text-light fw-bold">
-                工欲善其事，必先利其器！
-              </h2> -->
             <!-- 文字輸入動畫效果 -->
             <vue-writer class="text-sm-m text-lg-3xl text-4xl text-center text-light fw-bold" :array="['工欲善其事，必先利其器！', '來蝦拍選購，選購後不瞎拍！']" :typeSpeed="150" />
           </div>
@@ -24,27 +21,25 @@
           <div class="col-md-3 col-lg-2">
             <ul class="list-group">
               <li>
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                全部商品
-              </a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === undefined }"> 全部商品 </a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action">單眼相機</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '單眼相機' }">單眼相機</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action">單眼鏡頭</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '單眼鏡頭' }">單眼鏡頭</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action">鏡頭濾鏡</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '鏡頭濾鏡' }">鏡頭濾鏡</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action">攝影腳架</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '攝影腳架' }">攝影腳架</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action">三軸穩定器</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '三軸穩定器' }">三軸穩定器</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action">記憶卡</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '記憶卡' }">記憶卡</a>
               </li>
             </ul>
           </div>
@@ -52,104 +47,18 @@
             <ul class="row ps-0">
               <li class="col-12 col-md-6 col-lg-4 mb-5" v-for="product in products" :key="product.id">
                 <div class="card">
-                  <div
-                    style="height: 220px; background-size: contain;
-                    background-position: center; background-repeat: no-repeat;"
-                    :style="{ backgroundImage: `url(${product.imageUrl})` }"
-                  ></div>
+                  <div style="height: 220px; background-size: contain; background-position: center; background-repeat: no-repeat" :style="{ backgroundImage: `url(${product.imageUrl})` }"></div>
                   <div class="card-body">
                     <h5 class="card-title">{{ product.title }}</h5>
                     <div class="card-price">
                       <del class="h6" v-if="product.price">原價{{ product.origin_price }}元</del>
-                      <div class="h5 text-danger fw-bolder" v-if="product.price">
-                        現在只要{{ product.price }}元
-                      </div>
+                      <div class="h5 text-danger fw-bolder" v-if="product.price">現在只要{{ product.price }}元</div>
                     </div>
                     <button type="button" class="btn btn-danger me-3 me-md-1">加入購物車</button>
                     <button type="button" class="btn btn-primary">查看更多</button>
                   </div>
                 </div>
               </li>
-              <!-- <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <div class="card-price">
-                      <del class="h6">原價?元</del>
-                      <div class="h5 text-danger fw-bolder">
-                        現在只要?元
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-danger me-3 me-md-1">加入購物車</button>
-                    <button type="button" class="btn btn-primary">查看更多</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <div class="card-price">
-                      <del class="h6">原價?元</del>
-                      <div class="h5 text-danger fw-bolder">
-                        現在只要?元
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-danger me-3 me-md-1">加入購物車</button>
-                    <button type="button" class="btn btn-primary">查看更多</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <div class="card-price">
-                      <del class="h6">原價?元</del>
-                      <div class="h5 text-danger fw-bolder">
-                        現在只要?元
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-danger me-3 me-md-1">加入購物車</button>
-                    <button type="button" class="btn btn-primary">查看更多</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <div class="card-price">
-                      <del class="h6">原價?元</del>
-                      <div class="h5 text-danger fw-bolder">
-                        現在只要?元
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-danger me-3 me-md-1">加入購物車</button>
-                    <button type="button" class="btn btn-primary">查看更多</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <div class="card-price">
-                      <del class="h6">原價?元</del>
-                      <div class="h5 text-danger fw-bolder">
-                        現在只要?元
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-danger me-3 me-md-1">加入購物車</button>
-                    <button type="button" class="btn btn-primary">查看更多</button>
-                  </div>
-                </div>
-              </div> -->
             </ul>
           </div>
         </div>
@@ -170,12 +79,11 @@
 </template>
 
 <script>
-
 // 載入 分頁頁碼 元件
+import Loading from 'vue-loading-overlay';
 import pagination from '@/components/Pagination.vue';
 
 // 載入 讀取套件 元件
-import Loading from 'vue-loading-overlay';
 
 // scrollTop 需要的 DOM
 const tBody = document.querySelector('html,body');
@@ -192,6 +100,7 @@ export default {
       isLoadingItem: '',
       // loading 外部插件，針對整體讀取效果
       isLoading: false,
+      category: '',
     };
   },
   components: {
@@ -212,41 +121,48 @@ export default {
       });
     },
     // 取得全部商品列表
-    getProducts(page = 1) { // 使用參數預設值觀念，若未帶參數，則預設為第1頁
+    getProducts(page = 1) {
+      // 使用參數預設值觀念，若未帶參數，則預設為第1頁
       // 將預設page參數帶入API網址中
       this.isLoading = true;
       // 解析出品項分類的 category
       const { category } = this.$route.params;
       // console.log(category);
+      this.category = category;
+      console.log(category);
 
       // 判斷是否有帶入品項分類的 category
       if (category !== undefined) {
         // console.log(category);
-        this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}&category=${category}`)
+        this.$http
+          .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}&category=${category}`)
           .then((res) => {
-          // console.log(res.data);
-          // 取出前台商品內容
+            // console.log(res.data);
+            // 取出前台商品內容
             this.products = res.data.products;
             // console.log(this.products);
             this.pagination = res.data.pagination;
             // console.log(this.pagination)
             tBody.scrollTop = 0;
             this.isLoading = false;
-          }).catch((err) => {
+          })
+          .catch((err) => {
             console.log(err);
           });
       } else {
-        this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`)
+        this.$http
+          .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`)
           .then((res) => {
-          // console.log(res.data);
-          // 取出前台商品內容
+            // console.log(res.data);
+            // 取出前台商品內容
             this.products = res.data.products;
             // console.log(this.products);
             this.pagination = res.data.pagination;
             // console.log(this.pagination)
             tBody.scrollTop = 0;
             this.isLoading = false;
-          }).catch((err) => {
+          })
+          .catch((err) => {
             console.log(err);
           });
       }

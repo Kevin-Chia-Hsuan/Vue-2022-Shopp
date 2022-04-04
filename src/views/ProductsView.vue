@@ -21,25 +21,25 @@
           <div class="col-md-3 col-lg-2">
             <ul class="list-group">
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === undefined }"> 全部商品 </a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === undefined }" @click.prevent="toProducts((page = 1), undefined)"> 全部商品 </a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '單眼相機' }">單眼相機</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '單眼相機' }" @click.prevent="toProducts((page = 1), '單眼相機')">單眼相機</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '單眼鏡頭' }">單眼鏡頭</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '單眼鏡頭' }" @click.prevent="toProducts((page = 1), '單眼鏡頭')">單眼鏡頭</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '鏡頭濾鏡' }">鏡頭濾鏡</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '鏡頭濾鏡' }" @click.prevent="toProducts((page = 1), '鏡頭濾鏡')">鏡頭濾鏡</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '攝影腳架' }">攝影腳架</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '攝影腳架' }" @click.prevent="toProducts((page = 1), '攝影腳架')">攝影腳架</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '三軸穩定器' }">三軸穩定器</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '三軸穩定器' }" @click.prevent="toProducts((page = 1), '三軸穩定器')">三軸穩定器</a>
               </li>
               <li>
-                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '記憶卡' }">記憶卡</a>
+                <a href="#" class="list-group-item list-group-item-action" :class="{ active: category === '記憶卡' }" @click.prevent="toProducts((page = 1), '記憶卡')">記憶卡</a>
               </li>
             </ul>
           </div>
@@ -66,7 +66,7 @@
       <div class="container mt-12 mt-md-15">
         <div class="row">
           <div class="d-flex justify-content-center">
-            <pagination :page="pagination" @get-product="getProducts"></pagination>
+            <pagination :page="pagination" :category="category" @to-product="toProducts"></pagination>
           </div>
         </div>
       </div>
@@ -127,9 +127,8 @@ export default {
       this.isLoading = true;
       // 解析出品項分類的 category
       const { category } = this.$route.params;
-      // console.log(category);
       this.category = category;
-      console.log(category);
+      // console.log(category);
 
       // 判斷是否有帶入品項分類的 category
       if (category !== undefined) {
@@ -143,6 +142,43 @@ export default {
             // console.log(this.products);
             this.pagination = res.data.pagination;
             // console.log(this.pagination)
+            tBody.scrollTop = 0;
+            this.isLoading = false;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        this.$http
+          .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`)
+          .then((res) => {
+            // console.log(res.data);
+            // 取出前台商品內容
+            this.products = res.data.products;
+            // console.log(this.products);
+            this.pagination = res.data.pagination;
+            // console.log(this.pagination)
+            tBody.scrollTop = 0;
+            this.isLoading = false;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    },
+    toProducts(page = 1, getCategory) {
+      this.category = getCategory;
+      if (this.category !== undefined) {
+        // console.log(category);
+        this.$http
+          .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}&category=${this.category}`)
+          .then((res) => {
+            // console.log(res.data);
+            // 取出前台商品內容
+            this.products = res.data.products;
+            // console.log(this.products);
+            this.pagination = res.data.pagination;
+            // console.log(this.pagination);
             tBody.scrollTop = 0;
             this.isLoading = false;
           })

@@ -2,36 +2,16 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item" :class="{ disabled: !page.has_pre }">
-        <a
-          class="page-link"
-          href="#"
-          aria-label="Previous"
-          @click.prevent="$emit('get-product', page.current_page - 1)"
-        >
+        <a class="page-link" href="#" aria-label="Previous" @click.prevent="$emit('to-product', page.current_page - 1, category)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li
-        class="page-item"
-        :class="{ active: item === page.current_page }"
-        v-for="item in page.total_pages"
-        :key="item"
-      >
-        <a
-          class="page-link"
-          href="#"
-          @click.prevent="$emit('get-product', item)"
-          >{{ item }}</a
-        >
+      <li class="page-item" :class="{ active: item === page.current_page }" v-for="item in page.total_pages" :key="item">
+        <a class="page-link" href="#" @click.prevent="$emit('to-product', item, category)">{{ item }}</a>
       </li>
 
       <li class="page-item" :class="{ disabled: !page.has_next }">
-        <a
-          class="page-link"
-          href="#"
-          aria-label="Next"
-          @click.prevent="$emit('get-product', page.current_page + 1)"
-        >
+        <a class="page-link" href="#" aria-label="Next" @click.prevent="$emit('to-product', page.current_page + 1, category)">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
@@ -41,7 +21,7 @@
 
 <script>
 export default {
-  props: ['page'],
+  props: ['page', 'category'],
   methods: {
     emitPages(item) {
       this.$emit('get-page', item);
